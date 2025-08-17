@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monikers (Vanilla + XState)</title>
+  <style>
+    * { box-sizing: border-box; }
+    
+    body { 
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; 
+      margin: 0; 
+      padding: 1rem; 
+      background: #fff;
+      color: #000;
+      line-height: 1.5;
+    }
+    
+    @media (min-width: 768px) {
+      body { 
+        margin: 1rem auto; 
+        max-width: 800px; 
+        padding: 0 1rem;
+      }
+    }
+    
+    header { 
+      display: flex; 
+      align-items: baseline; 
+      gap: 1rem; 
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: 1.75rem;
+    }
+    
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.5rem; }
+    }
+    
+    .row { 
+      display: flex; 
+      gap: .75rem; 
+      flex-wrap: wrap; 
+      align-items: center; 
+    }
+    
+    @media (max-width: 480px) {
+      .row { gap: .5rem; }
+    }
+    
+    .card { 
+      padding: 1rem; 
+      border: 1px solid #ddd; 
+      border-radius: .75rem; 
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    /* Reduce top padding for lobby card */
+    #viewLobby .card {
+      padding-top: .75rem;
+    }
+    
+    @media (max-width: 480px) {
+      .card { padding: .875rem; }
+      #viewLobby .card { padding-top: .625rem; }
+    }
+    
+    .muted { color: #666; }
+    
+    button { 
+      cursor: pointer; 
+      padding: .75rem 1.25rem;
+      border: 1px solid #000;
+      background: #fff;
+      color: #000;
+      border-radius: .5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      min-height: 44px;
+    }
+    
+    /* Game action buttons */
+    #guessBtn, #skipBtn {
+      min-height: 60px;
+      font-weight: 600;
+      border-width: 2px;
+    }
+    
+    #guessBtn:hover {
+      background: #000;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    
+    #skipBtn:hover {
+      background: #666;
+      color: #fff;
+      border-color: #666;
+      transform: translateY(-1px);
+    }
+    
+    button:hover {
+      background: #000;
+      color: #fff;
+    }
+    
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    @media (max-width: 480px) {
+      button { 
+        padding: .875rem 1rem; 
+        font-size: 0.95rem;
+        min-height: 48px;
+      }
+    }
+    
+    .stack { 
+      display: grid; 
+      gap: 1rem; 
+    }
+    
+    @media (max-width: 480px) {
+      .stack { gap: .875rem; }
+    }
+    
+    /* Full height turn view */
+    #viewTurn {
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 200px);
+    }
+    
+    #viewTurn .card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    #viewTurn .card > div:first-child {
+      flex-shrink: 0;
+    }
+    
+    #viewTurn .card > div:nth-child(2) {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    
+    #viewTurn .card > div:last-child {
+      flex-shrink: 0;
+    }
+    
+    input, textarea, select {
+      padding: .75rem;
+      border: 1px solid #ddd;
+      border-radius: .5rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      color: #000;
+      min-height: 44px;
+    }
+    
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #000;
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+    }
+    
+    @media (max-width: 480px) {
+      input, textarea, select { 
+        padding: .875rem; 
+        font-size: 16px; /* Prevents zoom on iOS */
+        min-height: 48px;
+      }
+    }
+    
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 500;
+    }
+    
+    /* Touch-friendly spacing for mobile */
+    @media (max-width: 480px) {
+      .card + .card { margin-top: .5rem; }
+      button + button { margin-left: .5rem; }
+    }
+    
+    /* Compact scoreboard styling */
+    #scoreboard {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+    
+    .score-item {
+      display: inline-block;
+      margin-right: 1rem;
+      font-weight: 500;
+    }
+    
+    .score-item:last-child {
+      margin-right: 0;
+    }
+    
+    .deck-count {
+      color: #666;
+      font-size: 0.9em;
+    }
+    
+    @media (max-width: 480px) {
+      #scoreboard {
+        font-size: 0.9rem;
+      }
+      
+      .score-item {
+        margin-right: 0.75rem;
+      }
+      
+      .deck-count {
+        font-size: 0.85em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Monikers</h1>
+    <span id="viewTitle" class="muted"></span>
+    <span id="roundRule" class="muted"></span>
+  </header>
+
+  <!-- LOBBY -->
+  <section id="viewLobby" class="stack">
+    <div class="card">
+      <div class="row">
+        <label>Team 1: <input id="team1Name" value="Apple" /></label>
+        <label>Team 2: <input id="team2Name" value="Grape" /></label>
+      </div>
+
+      <div class="row">
+        <label>Turn seconds: <input id="secondsInput" type="number" value="45" min="10" max="120"></label>
+      </div>
+      <div class="stack">
+        <label>Deck:</label>
+        <div class="row">
+          <select id="cardCategory">
+            <option value="">Custom cards</option>
+            <option value="Classic">Classic</option>
+            <option value="Pop Culture">Pop Culture</option>
+            <option value="Food & Drink">Food & Drink</option>
+            <option value="Animals">Animals</option>
+            <option value="Sports">Sports</option>
+            <option value="Technology">Technology</option>
+            <option value="Places">Places</option>
+            <option value="Random">Random</option>
+            <option value="All">All Cards (Random 20)</option>
+          </select>
+          <button id="loadCardsBtn">Load Cards</button>
+        </div>
+        <textarea id="cardsInput" rows="5" placeholder="One card per line…">Ada Lovelace
+Mount Everest
+The Matrix
+Mona Lisa
+Rubik’s Cube</textarea>
+        <button id="startGameBtn">Start Game</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCOREBOARD (always visible) -->
+  <section class="card">
+    <div id="scoreboard" class="row"></div>
+  </section>
+
+  <!-- ROUND SETUP (optional if you keep it) -->
+  <section id="viewRoundSetup" class="stack" hidden>
+    <div class="card">
+      <p class="muted" id="roundInfo"></p>
+      <button id="startTurnBtn1">Start Turn</button>
+    </div>
+  </section>
+
+  <!-- BETWEEN ROUNDS -->
+  <section id="viewBetweenRounds" class="stack" hidden>
+    <div class="card">
+      <p class="muted" id="betweenInfo"></p>
+      <button id="startTurnBtn2">Start Turn</button>
+    </div>
+  </section>
+
+  <!-- TURN -->
+  <section id="viewTurn" class="stack" hidden>
+    <div class="card">
+      <div class="row">
+        <strong>Team:</strong> <span id="currentTeam"></span>
+        <strong>Time:</strong> <span id="timer"></span>
+      </div>
+      <div class="card" style="font-size:1.5rem; text-align:center; padding:2rem;" id="currentCard">—</div>
+      <div class="row" style="justify-content:center; gap:1rem;">
+        <button id="guessBtn" style="flex:1; max-width:200px; font-size:1.1rem; padding:1rem;">Guess ✓</button>
+        <button id="skipBtn" style="flex:1; max-width:200px; font-size:1.1rem; padding:1rem;">Skip ↷</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HANDOFF -->
+  <section id="viewHandoff" class="stack" hidden>
+    <div class="card" style="text-align:center;">
+      <p id="handoffTeam" style="font-size:1.25rem; margin:1rem 0;"></p>
+      <p id="handoffDeckCount" class="muted" style="margin:0.5rem 0;"></p>
+      <button id="handoffStartBtn">Start Turn ▶</button>
+    </div>
+  </section>
+
+  <!-- GAME OVER -->
+  <section id="viewGameOver" class="stack" hidden>
+    <div class="card">
+      <div id="finalScores"></div>
+      <button id="resetBtn">Reset</button>
+    </div>
+  </section>
+
+  <!-- main -->
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

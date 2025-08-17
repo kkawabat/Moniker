@@ -1,0 +1,658 @@
+{
+  "Classic": [
+    {
+      "word": "Ada Lovelace",
+      "description": "First computer programmer, wrote the first algorithm for Charles Babbage's Analytical Engine"
+    },
+    {
+      "word": "Mount Everest",
+      "description": "Highest mountain in the world, located in the Himalayas"
+    },
+    {
+      "word": "The Matrix",
+      "description": "1999 sci-fi film about a computer hacker who discovers the world is a simulation"
+    },
+    {
+      "word": "Mona Lisa",
+      "description": "Famous painting by Leonardo da Vinci, known for her mysterious smile"
+    },
+    {
+      "word": "Rubik's Cube",
+      "description": "3D combination puzzle invented by Ernő Rubik in 1974"
+    },
+    {
+      "word": "Leonardo da Vinci",
+      "description": "Italian Renaissance polymath, painter, sculptor, architect, and scientist"
+    },
+    {
+      "word": "The Beatles",
+      "description": "British rock band from Liverpool, one of the most influential bands in history"
+    },
+    {
+      "word": "Eiffel Tower",
+      "description": "Iron lattice tower in Paris, France, built for the 1889 World's Fair"
+    },
+    {
+      "word": "Shakespeare",
+      "description": "English playwright and poet, author of Romeo and Juliet, Hamlet, and many others"
+    },
+    {
+      "word": "Pizza",
+      "description": "Italian dish consisting of a flattened disk of bread dough topped with olive oil and cheese"
+    },
+    {
+      "word": "Einstein",
+      "description": "German-born theoretical physicist who developed the theory of relativity"
+    },
+    {
+      "word": "The Moon",
+      "description": "Earth's only natural satellite, first visited by humans in 1969"
+    },
+    {
+      "word": "Michael Jackson",
+      "description": "American singer, songwriter, and dancer, known as the 'King of Pop'"
+    },
+    {
+      "word": "The Great Wall",
+      "description": "Series of fortifications in China, built to protect against invasions"
+    },
+    {
+      "word": "Mickey Mouse",
+      "description": "Cartoon character created by Walt Disney, the mascot of Disney"
+    },
+    {
+      "word": "Titanic",
+      "description": "British passenger liner that sank in 1912 after hitting an iceberg"
+    },
+    {
+      "word": "Beethoven",
+      "description": "German composer and pianist, one of the most admired composers in history"
+    },
+    {
+      "word": "The Internet",
+      "description": "Global system of interconnected computer networks"
+    },
+    {
+      "word": "Vincent van Gogh",
+      "description": "Dutch post-impressionist painter, known for works like Starry Night"
+    },
+    {
+      "word": "The Olympics",
+      "description": "International sporting event held every four years"
+    }
+  ],
+  "Pop Culture": [
+    {
+      "word": "Harry Potter",
+      "description": "Fictional wizard and protagonist of the Harry Potter book series"
+    },
+    {
+      "word": "Star Wars",
+      "description": "Epic space opera film series created by George Lucas"
+    },
+    {
+      "word": "Marvel",
+      "description": "Comic book publisher and film studio, home to superheroes like Iron Man and Spider-Man"
+    },
+    {
+      "word": "Disney",
+      "description": "Entertainment company known for animated films and theme parks"
+    },
+    {
+      "word": "Netflix",
+      "description": "Streaming service that offers movies, TV shows, and original content"
+    },
+    {
+      "word": "Instagram",
+      "description": "Social media platform for sharing photos and videos"
+    },
+    {
+      "word": "TikTok",
+      "description": "Social media platform for short-form videos"
+    },
+    {
+      "word": "YouTube",
+      "description": "Video-sharing platform where users can upload and watch videos"
+    },
+    {
+      "word": "Fortnite",
+      "description": "Online video game where 100 players fight to be the last one standing"
+    },
+    {
+      "word": "Minecraft",
+      "description": "Sandbox video game where players build and explore blocky worlds"
+    },
+    {
+      "word": "Pokemon",
+      "description": "Media franchise about creatures that trainers catch and battle"
+    },
+    {
+      "word": "Super Mario",
+      "description": "Video game character, a plumber who saves Princess Peach from Bowser"
+    },
+    {
+      "word": "Game of Thrones",
+      "description": "Fantasy TV series based on George R.R. Martin's novels"
+    },
+    {
+      "word": "Stranger Things",
+      "description": "Netflix series about kids investigating supernatural events in the 1980s"
+    },
+    {
+      "word": "The Office",
+      "description": "Mockumentary sitcom about employees at a paper company"
+    },
+    {
+      "word": "Friends",
+      "description": "Sitcom about six friends living in New York City"
+    },
+    {
+      "word": "Breaking Bad",
+      "description": "TV series about a chemistry teacher who becomes a drug manufacturer"
+    },
+    {
+      "word": "The Simpsons",
+      "description": "Animated sitcom about the Simpson family, longest-running American TV series"
+    },
+    {
+      "word": "South Park",
+      "description": "Animated sitcom known for its satirical humor and social commentary"
+    },
+    {
+      "word": "Family Guy",
+      "description": "Animated sitcom about the Griffin family and their talking dog"
+    }
+  ],
+  "Food & Drink": [
+    {
+      "word": "Sushi",
+      "description": "Japanese dish of vinegared rice with various ingredients, often raw fish"
+    },
+    {
+      "word": "Taco",
+      "description": "Mexican dish consisting of a corn or wheat tortilla folded around a filling"
+    },
+    {
+      "word": "Burger",
+      "description": "Sandwich consisting of a cooked meat patty between bread buns"
+    },
+    {
+      "word": "Pizza",
+      "description": "Italian dish with a flattened bread base topped with cheese and other ingredients"
+    },
+    {
+      "word": "Ice Cream",
+      "description": "Frozen dessert made from dairy products, sugar, and flavorings"
+    },
+    {
+      "word": "Coffee",
+      "description": "Brewed drink made from roasted coffee beans"
+    },
+    {
+      "word": "Wine",
+      "description": "Alcoholic beverage made from fermented grapes"
+    },
+    {
+      "word": "Beer",
+      "description": "Alcoholic beverage made from fermented grains like barley"
+    },
+    {
+      "word": "Chocolate",
+      "description": "Sweet food made from roasted and ground cacao seeds"
+    },
+    {
+      "word": "Cake",
+      "description": "Sweet baked dessert, often served on special occasions"
+    },
+    {
+      "word": "Bread",
+      "description": "Staple food made from flour, water, and yeast"
+    },
+    {
+      "word": "Cheese",
+      "description": "Dairy product made from curdled milk"
+    },
+    {
+      "word": "Pasta",
+      "description": "Italian food made from unleavened dough of wheat flour and water"
+    },
+    {
+      "word": "Steak",
+      "description": "Slice of meat, typically beef, cooked by grilling or frying"
+    },
+    {
+      "word": "Salad",
+      "description": "Dish of mixed raw vegetables, often served with dressing"
+    },
+    {
+      "word": "Soup",
+      "description": "Liquid food made by boiling meat, fish, or vegetables"
+    },
+    {
+      "word": "Sandwich",
+      "description": "Food consisting of fillings between two slices of bread"
+    },
+    {
+      "word": "Hot Dog",
+      "description": "Sausage served in a sliced bun, popular at sporting events"
+    },
+    {
+      "word": "French Fries",
+      "description": "Deep-fried potato strips, often served as a side dish"
+    },
+    {
+      "word": "Popcorn",
+      "description": "Corn kernels that expand and puff up when heated"
+    }
+  ],
+  "Animals": [
+    {
+      "word": "Elephant",
+      "description": "Large gray mammal with a long trunk and tusks, known for its intelligence"
+    },
+    {
+      "word": "Lion",
+      "description": "Large cat known as the 'King of the Jungle', lives in prides"
+    },
+    {
+      "word": "Tiger",
+      "description": "Large striped cat, the largest wild cat species"
+    },
+    {
+      "word": "Giraffe",
+      "description": "Tall African animal with a long neck and spotted coat"
+    },
+    {
+      "word": "Penguin",
+      "description": "Flightless bird that lives in cold climates and swims well"
+    },
+    {
+      "word": "Dolphin",
+      "description": "Intelligent marine mammal known for its playful behavior"
+    },
+    {
+      "word": "Eagle",
+      "description": "Large bird of prey with excellent eyesight"
+    },
+    {
+      "word": "Shark",
+      "description": "Cartilaginous fish with sharp teeth, apex predator of the ocean"
+    },
+    {
+      "word": "Bear",
+      "description": "Large mammal with thick fur, found in forests and mountains"
+    },
+    {
+      "word": "Wolf",
+      "description": "Wild dog that lives in packs and howls at the moon"
+    },
+    {
+      "word": "Fox",
+      "description": "Small wild dog with a bushy tail, known for being clever"
+    },
+    {
+      "word": "Cat",
+      "description": "Small domesticated feline, popular pet known for independence"
+    },
+    {
+      "word": "Dog",
+      "description": "Domesticated canine, known as 'man's best friend'"
+    },
+    {
+      "word": "Horse",
+      "description": "Large domesticated mammal used for riding and pulling"
+    },
+    {
+      "word": "Cow",
+      "description": "Domesticated cattle, provides milk and meat"
+    },
+    {
+      "word": "Pig",
+      "description": "Domesticated swine, known for being intelligent and pink"
+    },
+    {
+      "word": "Chicken",
+      "description": "Domesticated bird raised for meat and eggs"
+    },
+    {
+      "word": "Duck",
+      "description": "Water bird with webbed feet and a flat bill"
+    },
+    {
+      "word": "Rabbit",
+      "description": "Small mammal with long ears and a fluffy tail"
+    },
+    {
+      "word": "Squirrel",
+      "description": "Small rodent with a bushy tail, often seen climbing trees"
+    }
+  ],
+  "Sports": [
+    {
+      "word": "Soccer",
+      "description": "Team sport played with a round ball, most popular sport in the world"
+    },
+    {
+      "word": "Basketball",
+      "description": "Team sport where players shoot a ball through a hoop"
+    },
+    {
+      "word": "Baseball",
+      "description": "Bat-and-ball game played between two teams of nine players"
+    },
+    {
+      "word": "Football",
+      "description": "Team sport played with an oval ball, most popular in the US"
+    },
+    {
+      "word": "Tennis",
+      "description": "Racket sport played between two or four players"
+    },
+    {
+      "word": "Golf",
+      "description": "Precision club-and-ball sport played on a course with holes"
+    },
+    {
+      "word": "Swimming",
+      "description": "Individual or team sport that involves moving through water"
+    },
+    {
+      "word": "Running",
+      "description": "Individual sport of moving at a fast pace on foot"
+    },
+    {
+      "word": "Cycling",
+      "description": "Sport of riding bicycles, can be road, track, or mountain biking"
+    },
+    {
+      "word": "Boxing",
+      "description": "Combat sport where two people throw punches at each other"
+    },
+    {
+      "word": "Wrestling",
+      "description": "Combat sport involving grappling techniques"
+    },
+    {
+      "word": "Volleyball",
+      "description": "Team sport where players hit a ball over a net"
+    },
+    {
+      "word": "Hockey",
+      "description": "Team sport played on ice with sticks and a puck"
+    },
+    {
+      "word": "Cricket",
+      "description": "Bat-and-ball game popular in Commonwealth countries"
+    },
+    {
+      "word": "Rugby",
+      "description": "Team sport similar to football but with different rules"
+    },
+    {
+      "word": "Olympics",
+      "description": "International sporting event held every four years"
+    },
+    {
+      "word": "World Cup",
+      "description": "International soccer tournament held every four years"
+    },
+    {
+      "word": "Super Bowl",
+      "description": "Championship game of the National Football League"
+    },
+    {
+      "word": "NBA Finals",
+      "description": "Championship series of the National Basketball Association"
+    },
+    {
+      "word": "Wimbledon",
+      "description": "Tennis tournament held annually in London, one of the Grand Slams"
+    }
+  ],
+  "Technology": [
+    {
+      "word": "iPhone",
+      "description": "Smartphone designed and marketed by Apple Inc."
+    },
+    {
+      "word": "Android",
+      "description": "Mobile operating system developed by Google"
+    },
+    {
+      "word": "Computer",
+      "description": "Electronic device that processes data and performs calculations"
+    },
+    {
+      "word": "Internet",
+      "description": "Global network of connected computers"
+    },
+    {
+      "word": "WiFi",
+      "description": "Technology that allows devices to connect to the internet wirelessly"
+    },
+    {
+      "word": "Bluetooth",
+      "description": "Wireless technology for exchanging data between devices"
+    },
+    {
+      "word": "GPS",
+      "description": "Global Positioning System for determining location"
+    },
+    {
+      "word": "Drone",
+      "description": "Unmanned aerial vehicle controlled remotely"
+    },
+    {
+      "word": "Robot",
+      "description": "Machine capable of carrying out complex actions automatically"
+    },
+    {
+      "word": "AI",
+      "description": "Artificial Intelligence - computer systems that can perform tasks requiring human intelligence"
+    },
+    {
+      "word": "Virtual Reality",
+      "description": "Computer-generated environment that simulates physical presence"
+    },
+    {
+      "word": "3D Printing",
+      "description": "Process of creating three-dimensional objects from digital files"
+    },
+    {
+      "word": "Bitcoin",
+      "description": "Digital cryptocurrency created in 2009"
+    },
+    {
+      "word": "Social Media",
+      "description": "Online platforms for sharing content and connecting with others"
+    },
+    {
+      "word": "Cloud Computing",
+      "description": "Computing services delivered over the internet"
+    },
+    {
+      "word": "Cybersecurity",
+      "description": "Protection of computer systems from theft or damage"
+    },
+    {
+      "word": "Blockchain",
+      "description": "Distributed ledger technology that maintains a record of transactions"
+    },
+    {
+      "word": "Machine Learning",
+      "description": "Subset of AI that enables computers to learn without being explicitly programmed"
+    },
+    {
+      "word": "Quantum Computing",
+      "description": "Computing technology based on quantum mechanical phenomena"
+    },
+    {
+      "word": "Augmented Reality",
+      "description": "Technology that overlays digital information on the real world"
+    }
+  ],
+  "Places": [
+    {
+      "word": "New York",
+      "description": "Largest city in the United States, known as 'The Big Apple'"
+    },
+    {
+      "word": "London",
+      "description": "Capital city of England and the United Kingdom"
+    },
+    {
+      "word": "Paris",
+      "description": "Capital city of France, known as the 'City of Light'"
+    },
+    {
+      "word": "Tokyo",
+      "description": "Capital city of Japan, largest metropolitan area in the world"
+    },
+    {
+      "word": "Rome",
+      "description": "Capital city of Italy, known for its ancient history and architecture"
+    },
+    {
+      "word": "Sydney",
+      "description": "Largest city in Australia, known for its Opera House"
+    },
+    {
+      "word": "Las Vegas",
+      "description": "City in Nevada known for gambling, entertainment, and nightlife"
+    },
+    {
+      "word": "Disneyland",
+      "description": "Theme park in California created by Walt Disney"
+    },
+    {
+      "word": "Times Square",
+      "description": "Major commercial intersection in New York City, known for bright lights"
+    },
+    {
+      "word": "The White House",
+      "description": "Official residence and workplace of the President of the United States"
+    },
+    {
+      "word": "Buckingham Palace",
+      "description": "London residence of the British monarch"
+    },
+    {
+      "word": "The Colosseum",
+      "description": "Ancient amphitheater in Rome, largest of its kind"
+    },
+    {
+      "word": "The Pyramids",
+      "description": "Ancient Egyptian structures, one of the Seven Wonders of the Ancient World"
+    },
+    {
+      "word": "Machu Picchu",
+      "description": "Inca citadel set high in the Andes Mountains in Peru"
+    },
+    {
+      "word": "The Grand Canyon",
+      "description": "Steep-sided canyon carved by the Colorado River in Arizona"
+    },
+    {
+      "word": "Niagara Falls",
+      "description": "Group of three waterfalls on the border between Canada and the US"
+    },
+    {
+      "word": "Mount Rushmore",
+      "description": "National memorial featuring four US presidents carved into a mountain"
+    },
+    {
+      "word": "The Statue of Liberty",
+      "description": "Neoclassical sculpture on Liberty Island in New York Harbor"
+    },
+    {
+      "word": "The Golden Gate Bridge",
+      "description": "Suspension bridge spanning the Golden Gate strait in San Francisco"
+    },
+    {
+      "word": "The Empire State Building",
+      "description": "102-story Art Deco skyscraper in New York City"
+    }
+  ],
+  "Random": [
+    {
+      "word": "Time Travel",
+      "description": "Concept of moving between different points in time"
+    },
+    {
+      "word": "Superhero",
+      "description": "Fictional character with extraordinary powers who fights evil"
+    },
+    {
+      "word": "Vampire",
+      "description": "Mythological creature that drinks blood and is afraid of sunlight"
+    },
+    {
+      "word": "Zombie",
+      "description": "Undead creature that feeds on human flesh"
+    },
+    {
+      "word": "Alien",
+      "description": "Extraterrestrial being from another planet"
+    },
+    {
+      "word": "Ghost",
+      "description": "Spirit or soul of a dead person that appears to the living"
+    },
+    {
+      "word": "Wizard",
+      "description": "Person with magical powers and knowledge"
+    },
+    {
+      "word": "Dragon",
+      "description": "Large, fire-breathing mythical creature with scales and wings"
+    },
+    {
+      "word": "Unicorn",
+      "description": "Mythical horse-like creature with a single horn on its forehead"
+    },
+    {
+      "word": "Rainbow",
+      "description": "Meteorological phenomenon caused by reflection and refraction of light"
+    },
+    {
+      "word": "Thunder",
+      "description": "Sound caused by lightning, occurs during storms"
+    },
+    {
+      "word": "Lightning",
+      "description": "Electrical discharge during a thunderstorm"
+    },
+    {
+      "word": "Earthquake",
+      "description": "Sudden shaking of the ground caused by seismic waves"
+    },
+    {
+      "word": "Volcano",
+      "description": "Opening in Earth's crust where magma and gases escape"
+    },
+    {
+      "word": "Tornado",
+      "description": "Violently rotating column of air extending from a thunderstorm"
+    },
+    {
+      "word": "Hurricane",
+      "description": "Tropical cyclone with strong winds and heavy rain"
+    },
+    {
+      "word": "Tsunami",
+      "description": "Series of ocean waves caused by underwater earthquakes"
+    },
+    {
+      "word": "Avalanche",
+      "description": "Rapid flow of snow down a slope"
+    },
+    {
+      "word": "Meteor",
+      "description": "Small body of matter that enters Earth's atmosphere and burns up"
+    },
+    {
+      "word": "Black Hole",
+      "description": "Region of spacetime where gravity is so strong that nothing can escape"
+    }
+  ]
+}
