@@ -136,7 +136,7 @@ export const monikersMachine = setup({
     updateRemaining: ({ context, event }) => { context.remainingSeconds = event.remaining; },
     prepareNextRound: ({ context }) => Object.assign(context, startNextRoundBase(context)),
     resetGame: ({ context }) => {
-      context.teams.forEach((t) => (t.score = 0));
+      context.teams = [];
       context.roundIndex = 0;
       context.roundDeck = [];
       context.roundWon = [];
