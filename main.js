@@ -3,40 +3,50 @@ import { createActor } from 'https://esm.sh/xstate@5?bundle';
 import { monikersMachine, ROUNDS } from './lib/states.js';
 
 // Load card data
-let monikersCards = {};
+let monikersCards = [];
+let cardDescriptions = new Map(); // Store word -> description mapping
 
 // Load the JSON file
 async function loadCardData() {
   try {
     const response = await fetch('./data/monikers-cards.json');
     monikersCards = await response.json();
+    
+    // Build description mapping
+    cardDescriptions.clear();
+    monikersCards.forEach(card => {
+      cardDescriptions.set(card.word, card.description);
+    });
   } catch (error) {
     console.error('Failed to load card data:', error);
     // Fallback to basic cards
-    monikersCards = {
-      "Classic": [
-        { "word": "Ada Lovelace", "description": "First computer programmer" },
-        { "word": "Mount Everest", "description": "Highest mountain in the world" },
-        { "word": "The Matrix", "description": "1999 sci-fi film" },
-        { "word": "Mona Lisa", "description": "Famous painting by Leonardo da Vinci" },
-        { "word": "Rubik's Cube", "description": "3D combination puzzle" }
-      ]
-    };
+    monikersCards = [
+      { "word": "Ada Lovelace", "description": "First computer programmer", "category": ["Classic"] },
+      { "word": "Mount Everest", "description": "Highest mountain in the world", "category": ["Classic"] },
+      { "word": "The Matrix", "description": "1999 sci-fi film", "category": ["Classic"] },
+      { "word": "Mona Lisa", "description": "Famous painting by Leonardo da Vinci", "category": ["Classic"] },
+      { "word": "Rubik's Cube", "description": "3D combination puzzle", "category": ["Classic"] }
+    ];
+    
+    // Build description mapping for fallback
+    cardDescriptions.clear();
+    monikersCards.forEach(card => {
+      cardDescriptions.set(card.word, card.description);
+    });
   }
 }
 
 // Utility functions for working with card data
 function getAllCards() {
-  return Object.values(monikersCards).flat();
+  return monikersCards;
 }
 
 function getCardsByCategory(category) {
-  return monikersCards[category] || [];
+  return monikersCards.filter(card => card.category.includes(category));
 }
 
 function getRandomCards(count = 20) {
-  const allCards = getAllCards();
-  const shuffled = [...allCards].sort(() => 0.5 - Math.random());
+  const shuffled = [...monikersCards].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
 }
 
@@ -54,7 +64,8 @@ const ui = {
   team2Name: $('#team2Name'),
   secondsInput: $('#secondsInput'),
   cardCategory: $('#cardCategory'),
-  loadCardsBtn: $('#loadCardsBtn'),
+  deckSizeInput: $('#deckSizeInput'),
+  showWordsBtn: $('#showWordsBtn'),
   cardsInput: $('#cardsInput'),
   startGameBtn: $('#startGameBtn'),
 
@@ -96,12 +107,13 @@ const ui = {
 const actor = createActor(monikersMachine).start();
 
 // ------- Event handlers -------
-ui.loadCardsBtn.onclick = () => {
+ui.cardCategory.onchange = () => {
   const category = ui.cardCategory.value;
   let cards = [];
   
   if (category === 'All') {
-    cards = getRandomCards(20);
+    const deckSize = parseInt(ui.deckSizeInput.value) || 20;
+    cards = getRandomCards(deckSize);
   } else if (category) {
     cards = getCardsByCategory(category);
   }
@@ -111,6 +123,12 @@ ui.loadCardsBtn.onclick = () => {
     const words = cards.map(card => card.word);
     ui.cardsInput.value = words.join('\n');
   }
+};
+
+ui.showWordsBtn.onclick = () => {
+  const isHidden = ui.cardsInput.style.display === 'none';
+  ui.cardsInput.style.display = isHidden ? 'block' : 'none';
+  ui.showWordsBtn.textContent = isHidden ? 'Hide words' : 'Show words (spoiler)';
 };
 
 ui.startGameBtn.onclick = () => {
@@ -234,7 +252,33 @@ function render() {
   if (s.matches('rounds.turn.playing') || s.matches('rounds.turn.prepare') || s.matches('rounds.turn.turnEnd')) {
     ui.currentTeam.textContent = ctx.teams[ctx.currentTeamIndex]?.name ?? '—';
     ui.timer.textContent = `${ctx.remainingSeconds}s`;
-    ui.currentCard.textContent = ctx.currentCard ? ctx.currentCard.text : 'Draw…';
+    
+    if (ctx.currentCard) {
+      const description = cardDescriptions.get(ctx.currentCard.text);
+      if (description) {
+        // Check if description is an image URL
+        const isImageUrl = /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(description) || 
+                          /^https?:\/\/.*\.(jpg|jpeg|png|gif|webp|svg)/i.test(description) ||
+                          description.startsWith('data:image/');
+        
+        if (isImageUrl) {
+          ui.currentCard.innerHTML = `
+            <div style="font-size:1.5rem; margin-bottom:1rem;">${ctx.currentCard.text}</div>
+            <img src="${description}" alt="${ctx.currentCard.text}" onerror="this.classList.add('error'); this.nextElementSibling.style.display='block';" style="max-width:100%; max-height:200px; border-radius:0.5rem; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <div style="font-size:0.9rem; color:#666; font-style:italic; display:none;">${description}</div>
+          `;
+        } else {
+          ui.currentCard.innerHTML = `
+            <div style="font-size:1.5rem; margin-bottom:0.5rem;">${ctx.currentCard.text}</div>
+            <div style="font-size:0.9rem; color:#666; font-style:italic;">${description}</div>
+          `;
+        }
+      } else {
+        ui.currentCard.textContent = ctx.currentCard.text;
+      }
+    } else {
+      ui.currentCard.textContent = 'Draw…';
+    }
 
     const noCard = !ctx.currentCard;
     ui.guessBtn.disabled = noCard;
@@ -276,6 +320,13 @@ function render() {
 // Initialize and start the app
 async function init() {
   await loadCardData();
+  
+  // Initialize cardsInput with random cards
+  const deckSize = parseInt(ui.deckSizeInput.value) || 20;
+  const cards = getRandomCards(deckSize);
+  const words = cards.map(card => card.word);
+  ui.cardsInput.value = words.join('\n');
+  
   render();
 }
 
