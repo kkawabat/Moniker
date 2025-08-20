@@ -4,7 +4,7 @@ A simple, mobile-friendly implementation of the Monikers card game built with va
 
 ## 🎮 Play Now
 
-**[Play Monikers →](https://kkawabata.github.io/moniker/)**
+**[Play Monikers →](https://kkawabat.github.io/Moniker/)**
 
 ## 🚀 Features
 
