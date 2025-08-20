@@ -107,7 +107,8 @@ const ui = {
 const actor = createActor(monikersMachine).start();
 
 // ------- Event handlers -------
-ui.cardCategory.onchange = () => {
+// Function to update cards based on current category and deck size
+const updateCardsFromCategory = () => {
   const category = ui.cardCategory.value;
   let cards = [];
   
@@ -124,6 +125,11 @@ ui.cardCategory.onchange = () => {
     ui.cardsInput.value = words.join('\n');
   }
 };
+
+ui.cardCategory.onchange = updateCardsFromCategory;
+
+// Add event handler for deck size changes
+ui.deckSizeInput.onchange = updateCardsFromCategory;
 
 ui.showWordsBtn.onclick = () => {
   const isHidden = ui.cardsInput.style.display === 'none';
