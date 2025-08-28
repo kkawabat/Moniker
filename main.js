@@ -85,7 +85,7 @@ const ui = {
   timer: $('#timer'),
   deckCount: $('#deckCount'),
   currentCard: $('#currentCard'),
-  guessBtn: $('#guessBtn'),
+  nextBtn: $('#nextBtn'),
   skipBtn: $('#skipBtn'),
 
   // handoff
@@ -171,7 +171,7 @@ ui.startGameBtn.onclick = () => {
 ui.startTurnBtn1.onclick = () => { actor.send({ type: 'START_TURN' }); render(); };
 ui.startTurnBtn2.onclick = () => { actor.send({ type: 'START_TURN' }); render(); };
 
-ui.guessBtn.onclick = () => { actor.send({ type: 'GUESS' }); render(); };
+ui.nextBtn.onclick = () => { actor.send({ type: 'GUESS' }); render(); };
 ui.skipBtn.onclick = () => { actor.send({ type: 'SKIP' }); render(); };
 
 // handoff button
@@ -259,6 +259,17 @@ function render() {
     ui.currentTeam.textContent = ctx.teams[ctx.currentTeamIndex]?.name ?? '—';
     ui.timer.textContent = `${ctx.remainingSeconds}s`;
     
+    // Add warning class when 10 seconds or less remaining
+    if (ctx.remainingSeconds <= 10) {
+      ui.timer.classList.add('warning');
+    } else {
+      ui.timer.classList.remove('warning');
+    }
+    
+    // Update deck count
+    const totalCards = ctx.roundDeck.length + (ctx.currentCard ? 1 : 0);
+    ui.deckCount.textContent = `${totalCards}`;
+    
     if (ctx.currentCard) {
       const description = cardDescriptions.get(ctx.currentCard.text);
       if (description) {
@@ -287,7 +298,7 @@ function render() {
     }
 
     const noCard = !ctx.currentCard;
-    ui.guessBtn.disabled = noCard;
+    ui.nextBtn.disabled = noCard;
     ui.skipBtn.disabled = noCard;
   }
 

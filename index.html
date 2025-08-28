@@ -86,13 +86,13 @@
     }
     
     /* Game action buttons */
-    #guessBtn, #skipBtn {
+    #nextBtn, #skipBtn {
       min-height: 60px;
       font-weight: 600;
       border-width: 2px;
     }
     
-    #guessBtn:hover {
+    #nextBtn:hover {
       background: #000;
       color: #fff;
       transform: translateY(-1px);
@@ -243,6 +243,35 @@
       button + button { margin-left: .5rem; }
     }
     
+    /* Timer styling */
+    #timer {
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-family: 'Courier New', monospace;
+      transition: color 0.3s ease;
+    }
+    
+    #timer.warning {
+      color: #ff4444;
+      animation: pulse 1s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    /* Deck count styling */
+    #deckCount {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.5rem;
+      border: 2px solid #3b82f6;
+    }
+    
     /* Compact scoreboard styling */
     #scoreboard {
       font-size: 1rem;
@@ -348,10 +377,11 @@
       <div class="row">
         <strong>Team:</strong> <span id="currentTeam"></span>
         <strong>Time:</strong> <span id="timer"></span>
+        <strong>Cards:</strong> <span id="deckCount"></span>
       </div>
       <div class="card" style="text-align:center; padding:2rem;" id="currentCard">—</div>
       <div class="row" style="justify-content:center; gap:1rem;">
-        <button id="guessBtn" style="flex:1; max-width:200px; font-size:1.1rem; padding:1rem;">Guess ✓</button>
+        <button id="nextBtn" style="flex:1; max-width:200px; font-size:1.1rem; padding:1rem;">Next ✓</button>
         <button id="skipBtn" style="flex:1; max-width:200px; font-size:1.1rem; padding:1rem;">Skip ↷</button>
       </div>
     </div>
