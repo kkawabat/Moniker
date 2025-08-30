@@ -2,11 +2,13 @@
   {
     "word": "Ada Lovelace",
     "description": "First computer programmer, wrote the first algorithm for Charles Babbage's Analytical Engine",
+    "Score": 3,
     "category": ["Classic", "Technology"]
   },
   {
     "word": "Mount Everest",
     "description": "Highest mountain in the world, located in the Himalayas",
+    "Score": 2, 
     "category": ["Classic", "Places"]
   },
   {
