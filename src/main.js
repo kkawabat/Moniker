@@ -9,7 +9,7 @@ let cardDescriptions = new Map(); // Store word -> description mapping
 // Load the JSON file
 async function loadCardData() {
   try {
-    const response = await fetch('./data/monikers-cards.json');
+    const response = await fetch('./data/monikers_cards.json');
     monikersCards = await response.json();
     
     // Build description mapping
