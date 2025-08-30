@@ -201,7 +201,7 @@ export const monikersMachine = setup({
             },
         
             playing: {
-                invoke: { src: 'turnTimer', input: ({ context }) => ({ seconds: context.turnSeconds }) },
+                invoke: { src: 'turnTimer', input: ({ context }) => ({ seconds: context.remainingSeconds }) },
                 on: {
                 TICK: { actions: 'updateRemaining' },
                 TIME_UP: { target: 'turnEnd' },
